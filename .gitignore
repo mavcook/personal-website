@@ -1,0 +1,5 @@
+.vscode/
+config.py
+*.pyc
+**/uncompressed/
+venv/

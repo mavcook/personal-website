@@ -1,0 +1,46 @@
+.projects.gal {
+    display:flex;
+    flex-wrap:wrap;
+    height:auto
+}
+
+#imgCollapser{
+    position: relative;
+    top: -50px;
+    height: 50px;
+    width: 100%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#imgCollapser:after{
+    content:'Collapse';
+    color:white;
+    text-align: center;
+    display: block;
+    padding-top: 16px;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+#imgCollapser:hover{
+    background-color: rgba(255,255,255,0.1);
+}
+#imgCollapser:hover:after{
+    opacity:1;
+}
+#mediaWrap {
+    position: absolute;
+    width:100%;
+    height:0px;
+    overflow: hidden;
+    z-index: 51;
+    background-color: rgba(0,0,0, 0.97);
+}
+#imgView, #vidView {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: calc(100vh - 65px);
+    display: block;
+    margin: 0 auto;
+}

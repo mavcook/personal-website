@@ -1,0 +1,250 @@
+
+{% set um = {
+		'icon': url_for('static', filename='media/resume/education2.svg'),
+		'company': 'University of Michigan',
+		'date': '2015-Present',
+		'title': 'Bachelor of Science in Engineering, Computer Science',
+		'desc': 'Currently on track to graduate in May 2018',
+		'moreInfo': '
+			<h1 class="TS TS_Light_h1ElBody">Relevant Courses</h1>
+			<ul class="TS TS_Light_p2">
+				<li>Data Structures and Algorithms (<a href="https://bulletin.engin.umich.edu/courses/eecs/#eecs281" target="_blank">EECS 281</a>)</li>
+				<li>Web Databases &amp; Info. Systems (<a href="https://bulletin.engin.umich.edu/courses/eecs/#eecs485" target="_blank">EECS 485</a>)</li>
+				<li>*Programming Languages (<a href="https://bulletin.engin.umich.edu/courses/eecs/#eecs490" target="_blank">EECS 490</a>)</li>
+				<li>*Intro to Machine Learning (<a href="https://bulletin.engin.umich.edu/courses/eecs/#eecs445" target="_blank">EECS 445</a>)</li>
+				<li>Intro to Computer Security (<a href="https://bulletin.engin.umich.edu/courses/eecs/#eecs388" target="_blank">EECS 388</a>)</li>
+				<li>User Interface Development (<a href="https://bulletin.engin.umich.edu/courses/eecs/#eecs493" target="_blank">EECS 493</a>)</li>
+				<li>Programming in Java (<a href="https://bulletin.engin.umich.edu/courses/eecs/#eecs285" target="_blank">EECS 285</a>)</li>
+				<li>*Fundamentals of Computer Science (<a href="https://bulletin.engin.umich.edu/courses/eecs/#eecs376" target="_blank">EECS 376</a>)</li>
+				<li>Discrete Math (<a href="https://bulletin.engin.umich.edu/courses/eecs/#eecs203" target="_blank">EECS 203</a>)</li>
+				<li>Computer Organization (<a href="https://bulletin.engin.umich.edu/courses/eecs/#eecs370" target="_blank">EECS 370</a>)</li>
+				<p style="font-size:.8em">* Currently taking</p>
+			</ul>'
+	}
+%}
+
+{% set wcc = {
+		'company': 'Washtenaw Community College',
+		'date': '2014-2015',
+		'title': 'Transfer',
+		'desc': 'Attended 3 semesters before transferring to the University of Michigan College of Engineering'
+	}
+%}
+
+{%	set apple = {
+		'icon': url_for('static', filename='media/resume/workExp2.svg'),
+		'company': 'Apple',
+		'date': 'Summer 2017',
+		'title': 'Software QA Engineer Intern',
+		'desc': 'Summer intern on the Video Apps team',
+		'moreInfo': '<ul class="TS TS_Light_p2 bulletList">
+				<li>Developed tools, testing harnesses, and automation to increase team and testing efficiency</li>
+				<li>Managed priorities for a wide variety of deliverables, while conveying progress & risk effectively</li>
+				<li>Continual dialogue with Engineering and Design as products evolved</li>
+			</ul>'
+	}
+%}
+
+{%	set kellogg = {
+		'company': 'University of Michigan',
+		'date': '2016-Present',
+		'title': 'Kellogg Eye Center: Web Developer',
+		'desc': 'Developing a web application that intends to standardize how physicians grade retinal 
+		images, which will aide in quantifiable diagnoses of diabetes and other retinal diseases',
+		'moreInfo': '<p class="TS TS_Light_p2">
+				I began working on this project in September 2016, under the direction of <a href="http://www.andrewdeorio.com/" target="_blank">Dr. Andrew DeOrio</a>,
+				and the Kellogg Eye Center. I am working on the full stack for this application.<br/><br/>
+				
+				Technologies: JavaScript, Python Flask, OpenCV, SQLite3
+			</p>'
+	}
+%}
+
+{%	set nasa = {
+		'company': 'University of Michigan',
+		'date': '2015-2016',
+		'title': 'NASA CYGNSS Mission: Visualization Developer',
+		'desc': 'Developed an application that gave the public an interface to see the 
+		CYGNSS satellites from different views, and control the time periods they view',
+		'moreInfo': '<ul class="TS TS_Light_p2 bulletList">
+				<li>Wrote the <a href="view?p=2" target="_blank">interactive menu</a>, in Java, for selecting different scenarios and views for the application</li>
+				<li>Integrated STK software, through their API, to handle scenario generation and management</li> 
+				<li>Developed a graphical countdown application, written in Java, incorporating storm-imaging and custom graphic design elements</li>
+				<li>Researched and tested different software for space mission design/visualizations</li>
+				<li>Edited videos for the public displays in the Space Research Building</li>
+			</ul>'
+	}
+%}
+
+{%	set dl = {
+		'company': 'Washtenaw Community College',
+		'date': '2014-2015',
+		'title': 'Distance Learning: Video Production Technician',
+		'desc': 'Maintained existing media, and created new media 
+				for courses, including a motion graphics bumper for all courses',
+		'moreInfo': '<ul class="TS TS_Light_p2 bulletList">
+				<li>Edited lecture videos for online classes</li>
+				<li>Developed and designed pamphlets to introduce faculty to online classes</li> 
+			</ul>'
+	}
+%}
+
+{%	set computer = {
+		'icon': url_for('static', filename='media/resume/computer2.svg'),
+		'company': 'Computer Skills',
+		'desc_html': '<h1 class="TS TS_Light_h1ElBody">Languages and Systems</h1>
+					<p class="TS TS_Light_p2">Programming and Software development (2+ years) C++, Java, Python</p>
+					<p class="TS TS_Light_p2">Web Development with HTML/CSS/JavaScript, PHP, MySQL (1+ year)</p>
+					<p class="TS TS_Light_p2">Windows, Linux, and Mac OS</p>
+					<br>
+					<div> <!-- in div so first-of-type works-->
+					<h1 class="TS TS_Light_h1ElBody">Software and Tools</h1>
+					<p class="TS TS_Light_p2">Graphics and 3D Software: Cinema 4D, After Effects, Photoshop, Illustrator</p>
+					<p class="TS TS_Light_p2">Video Production Software: Final Cut Pro, Premiere Pro, Sony Vegas, Camtasia Studio</p>'
+	}
+%}
+
+{%	set art = {
+		'icon': url_for('static', filename='media/resume/art.svg'),
+		'company': 'Artistic Skills',
+		'desc_html': '<h1 class="TS TS_Light_h1ElBody">Pictorial</h1>
+					<p class="TS TS_Light_p2"><a href="' + url_for('view.main_route', name="Digital Art", p=9) + '" target="_blank">Motion graphics / graphic design</a> (6+ years)</p>
+					<p class="TS TS_Light_p2">Video editing, video compositing (6+ years)</p>
+					<p class="TS TS_Light_p2">Cinematography and photography</p>'
+	}
+%}
+
+{%	set sections = [
+		{
+			'title': 'EDUCATION',
+			'id': 'education',
+			'entries': [um, wcc]
+		},
+		{
+			'title': 'WORK EXPERIENCE',
+			'id': 'workExperience',
+			'entries': [apple, kellogg, nasa, dl]
+		},
+		{
+			'title': 'SKILLS',
+			'id': 'skills',
+			'entries': [computer, art]
+		}
+	]
+	
+%}
+
+{% extends "base.html" %}
+{% block title %}Resume{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/resume.css') }}"/>
+{% endblock %}
+
+{% block nav_watermark %} {% endblock %}
+
+{% block content %}
+<div id="wrap-resume">
+	{% for section in sections %}
+	<div id="{{ section['id'] }}" class="section collapseParent">
+
+		<div class="section-header row">
+
+			<div class="leftBars">
+				<div class="topBar TS TS_Light_bar"></div>
+				<div class="bottomBar TS TS_Light_bar"></div>
+			</div>
+			<!-- END LEFTBARS -->
+
+
+			<div class="titleAndBar">
+				<h1>{{ section['title'] }}</h1>
+				<div class="expander">
+					<div class="expander-open" style="display: none;">
+						<svg version="1.1" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 25 25">
+							<polyline fill="none" stroke="#6d6d6d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+							 points="7.765,21.973 17.236,12.5 7.763,3.027 " />
+						</svg>
+					</div>
+					<div class="expander-closed">
+						<svg version="1.1" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 25 25">
+							<polyline fill="none" stroke="#6d6d6d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+							 points="3.027,7.765 12.5,17.236 21.973,7.764 " />
+						</svg>
+					</div>
+				</div>
+				<!-- END .expander -->
+				<div class="rightBar TS TS_Light_bar"></div>
+			</div>
+
+		</div>
+		<!-- END  .section-header-->
+
+		{% for entry in section['entries'] %}
+		<div class="section-row collapse">
+			<div class="section-sidebar">
+				{% if 'icon' in entry %}
+				<div class="logoContainer">
+					<img src="{{ entry['icon'] }}" />
+				</div>
+				{% endif %}
+			</div>
+			<!-- END .sidebar -->
+
+			<div class="section-content collapseParent TS TS_Light_bg">
+
+				<div class="element-title">
+					<h1>{{ entry['company'] }}</h1>
+					{% if 'date' in entry %}
+					<p>{{ entry['date'] }}</p>
+					{% endif %}
+				</div>
+				<!-- END .elementTitle -->
+
+				<div class="element-body">
+					<div class="element-body-intro">
+						{% if 'title' in entry %}
+						<h1 class="TS TS_Light_h1ElBody">{{ entry['title'] }}</h1>
+						{% endif %} {% if 'desc' in entry %}
+						<p class="TS TS_Light_p2">{{ entry['desc'] }}</p>
+						{% elif 'desc_html' in entry %} {{ entry['desc_html']|safe }} {% endif %}
+					</div>
+					<div class="element-body-expanded collapse">
+						{{ entry['moreInfo']|safe }}
+					</div>
+				</div>
+				<!-- END elementBody -->
+
+				{% if entry['moreInfo'] %}
+				<div class="expander expander-body">
+					<div class="expander-open">
+						<svg version="1.1" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 25 25">
+							<polyline fill="none" stroke="#6d6d6d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+							 points="7.765,21.973 17.236,12.5 7.763,3.027 " />
+						</svg>
+					</div>
+					<div class="expander-closed" style="display: none;">
+						<svg version="1.1" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 25 25">
+							<polyline fill="none" stroke="#6d6d6d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+							 points="3.027,7.765 12.5,17.236 21.973,7.764 " />
+						</svg>
+					</div>
+				</div>
+				{% endif %}
+			</div>
+			<!-- END .section-content -->
+		</div>
+		<!-- END .section-row -->
+		{% endfor %}
+
+
+	</div>
+	<!-- end #education -->
+{% endfor %}
+
+</div></div>
+
+{% endblock %}
+{% block footer_additional %}
+<script src="{{ url_for('static', filename='js/resume.js') }}" type="text/javascript" defer></script>
+{% endblock %}

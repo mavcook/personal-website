@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %}Portfolio{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/portfolio.css') }}"/>
+{% endblock %}
+
+{% block nav_watermark %} {% endblock %}
+
+{% block content %}
+
+
+
+{% if requestedTags |length== 0 %}
+<div id="moFeat"><p>Featured</p></div>
+<div class="featured">
+
+	{% for p in projects %}
+		{% if p['isfeatured'] == 1 %}
+		<a href="{{ url_for('view.main_route', name=p['title'], p=p['project_id']) }}" id="featuredProj">
+			<div class="thumb twoFeat">
+				
+				<div class="projTitle"><p>{{ p['title'] }}</p></div>
+				<img src="{{ p['thumbnail'] }}_feat" alt="{{ p['title'] }}"> <!-- lol -->
+			
+			</div>
+		</a>
+
+		{% endif %}
+	{% endfor %}
+
+</div> <!-- END featured -->
+
+<div id="bigBar"></div>
+<div style="clear: both"></div>
+
+{% endif %}
+
+
+<div id="wrap-tags">
+{% for t in availableTags %}
+	{% if t['tag'] in requestedTags %}
+		{% set sel = 'selected' %}
+	{% else %}
+		{% set sel = '' %}
+	{% endif %}
+	<a href="{{ addGETTag(t['tag']) }}" class="tag {{sel}}">{{ t['tag']}}</a>
+{% endfor %}
+</div>
+<br/>
+
+<div class="projects">
+	
+	<div class="thumb">
+		<div class="sectionMark">
+			<div class="secBars">
+				<div class="bar" id="topBar"></div>
+				<div class="bar" id="bottomBar"></div>
+			</div>
+			
+			<div class="sectionTitle"><p>All Projects</p></div>
+			
+			<div class="secBars" id="botSecBar">
+				<div class="bar" id="topBar2"></div>
+				<div class="bar" id="bottomBar2"></div>
+			</div>
+			
+		</div>
+	</div>	
+	
+	{% for p in projects %}
+		<!-- {% if p['featured'] %}
+		{% endif %} -->
+		<a href="{{ url_for('view.main_route', name=p['title'], p=p['project_id']) }}">
+			<div class="thumb" id="proj{{ p['id'] }}">
+				
+				<div class="projTitle"><p>{{ p['title'] }}</p></div>
+				<img src="{{ p['thumbnail'] }}" 
+					alt="{{ p['title'] }} Thumbnail">
+			
+			</div>	
+		</a>
+	{% endfor %}
+	
+</div> <!-- END projects -->
+	
+{% endblock %}

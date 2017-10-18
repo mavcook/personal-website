@@ -1,0 +1,280 @@
+
+#content
+{	
+	padding-top: 5%;
+	font-size: .95em;
+}
+
+
+#wrap-resume 
+{
+	position: relative;
+	font-family: arial;
+	border-collapse: collapse;
+	line-height: 1.5em;
+	width: 100%;
+}
+
+.section-closed-padding{ padding-bottom: 5em;}
+.row
+{
+	width: 100%;
+	float: left;
+}
+
+.section-row:last-child .section-content{ padding-bottom:4em; }
+
+
+.section-header{ width: 100%; }
+
+
+.section-sidebar
+{
+	position: absolute;
+	display: none;
+	width: 28%;
+	height: auto;
+	left: 0;
+	background-color: #cc3333;
+	padding-top: 2em;
+	padding-bottom: 2em;
+}
+.section-content
+{
+	position: relative;
+	width: 100%;
+	float: left;
+	padding-top: 2em;
+	left: 0;
+}
+
+.section-row
+{
+	width: 100%;
+	height: auto;
+	overflow: auto;
+	background-color: #cc3333;
+	float: left; /* firefox bug */
+}
+
+
+.leftBars
+{
+	display: none;
+	margin-top: .45em;
+	position: relative;
+	height: .5em;
+	width: 12%;
+	float: left;
+}
+
+.topBar{ height: 20%; }
+
+.bottomBar
+{
+	position: absolute;
+	height: 50%;
+	width: 80%;
+	bottom: 0;
+	left: 20%;
+}
+
+.titleAndBar
+{
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	float: left;
+}
+
+.titleAndBar h1
+{
+	margin: 0;
+	padding-right: 3.1%;
+	padding-left: 8%;
+	font-size: 1.15em;
+	
+	font-weight: normal;
+	color: #cc3333;
+	display: inline-block;
+}
+
+.rightBar
+{
+	display: none;
+	width: 100%;
+	height: .1em;
+	position: absolute;
+	top: 42%;
+}
+
+
+.logoContainer
+{
+	position: relative;
+	margin: 0 auto;
+	height: 100%;
+	width: 25%;
+
+}
+.logoContainer img
+{
+	width: 100%;
+	height: auto;
+}
+
+
+.element-title
+{
+	position: relative;
+	width: 92%;
+	float: left;
+	padding-left: 8%;
+	color: #cc3333;
+}
+
+
+.element-title h1
+{
+	margin-top: 0;
+	margin-bottom: .1em;
+	font-size: 1em;
+	font-weight: normal;
+}
+
+.element-title p
+{
+	margin-top: 0;
+	font-size: .8em;
+	color: #6d6d6d;
+}
+
+
+.element-body
+{	
+	position: relative;
+	width: calc(92% - 30px);
+	padding-left: 8%;
+	float: left;
+}
+
+.expander
+{
+	width: 25px;
+	padding-right: 5px;
+	float: right;
+	cursor: pointer;
+}
+
+.element-body h1
+{
+	margin-top: 0;
+	font-size: 1em;
+	font-weight: normal;
+	margin-bottom: 0;
+}
+
+.element-body p:first-of-type { margin-top: -.8em; }
+
+.element-body p
+{
+	margin-top: 0;
+	padding-top: 1em;
+	font-size: 1em;
+	
+}
+
+.element-body-expanded
+{ 
+	display: none; 
+	padding-top: 1.7em;
+}
+
+ul
+{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+li {
+	padding: .5em 0 .5em 0;
+}
+.bulletList li:before {
+    content: "• ";
+}
+
+
+
+@media screen and (min-width: 550px)
+{
+	#content
+	{	
+		padding-top: 8%;
+	}
+	.titleAndBar { width: 75%;}
+	.titleAndBar h1 {font-size: 1.35em;padding-left: 3%;}
+	.leftBars
+	{
+		display: inline-block;
+		width: 25%;
+	}
+	.rightBar { display: inline-block; }
+	.section-sidebar
+	{
+		display: block;
+		width: 24%;
+	}
+	.section-content
+	{
+		width: 76%;
+		left: 24%;
+		padding-top: 4em;
+	}
+	.element-title
+	{
+		width: 23%;
+		padding-left: 10%;
+	}
+	.element-body
+	{	
+		width: calc(60% - 25px);
+		padding-left: 7%;
+	}
+	.expander
+	{
+		width: 20px;
+		padding-right: 5px;
+		float: none;
+		display: inline-block;
+	}
+}
+
+@media screen and (min-width: 950px)
+{
+	#content { padding-top: 5%; }
+	#wrap-resume { width: 62%; }
+
+	.leftBars { width: 32%; }
+	.titleAndBar { width: 68%;}
+	.section-sidebar
+	{
+		width: 28%;
+		padding-top: 4em;
+		padding-bottom: 4em;
+	}
+	.section-content
+	{
+		width: 72%;
+		left: 28%;
+		padding-top: 4em;
+	}
+	
+	.expander
+	{
+		width: 17px;
+		padding-right: 0;
+		display: inline-block;
+		cursor: pointer;
+	}
+	
+}

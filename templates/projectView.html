@@ -1,0 +1,69 @@
+{% set svgArrow %}
+	<svg version="1.1" x="0px" y="0px" viewBox="0 0 25 25"><polyline fill="none" stroke="#6d6d6d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="17.235,21.973 7.763,12.5 17.236,3.027 "/></svg>
+{% endset %}
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pv.css') }}"/>
+{% endblock %}
+
+{% block content %}
+<div class="mainWrap">
+
+	{% block banner %} {% endblock %}
+	<div class="media" id="mediaDiv">
+		<div class="mCarousel">
+			{% for m in media %}
+				{% set ext = getExt(m) %}
+					
+				{% for x in mediaEls if ext.lower() in mediaEls[x]['ext'] %}
+					<div class="cElement">
+						{% if x == 'html' %}
+							{% set a = rawME('static' + '/' + m) %}
+							{{ a|safe }}
+						{% else %}
+						{{ mediaEls[x]['pre_html'] }}{{ url_for('static', filename=m) }}{{ mediaEls[x]['post_html']}}
+						{% endif %}
+					</div>
+				{% endfor %}
+
+			{% endfor %}
+			
+			
+		</div> <!-- END mCarousel -->
+		
+		{% if media |length < 2 %}
+		{% set svgArrow %} {% endset %}
+		{% endif %}
+		<div class="arrow" id="leftArrow">{{ svgArrow }}</div>
+		<div class="arrow" id="rightArrow">{{ svgArrow }}</div>
+		
+	</div>
+	
+	<div class="pInfo">
+		
+		<table class="titleAndBars">
+			<tr>
+				<td class="bar"><hr class="TS TS_Light_bar"></td>
+				<td class="title"><h1 id="next">{{ title }} ({{ year }})</h1></td>
+				<td class="bar"><hr class="TS TS_Light_bar"></td>
+			</tr>
+		</table>
+			
+		<div class="description TS TS_Light_p">
+			<p id="prev">
+				{{ description|safe }}
+			</p>
+		</div>
+		
+		<a href="{{ requesterURL }}" id="btn">Return to Portfolio</a>
+	</div>
+	
+</div>
+		
+{% endblock content %}
+
+{% block footer_additional %}
+<script src="{{ url_for('static', filename='js/pv.js') }}" type="text/javascript" defer></script>
+{% endblock %}

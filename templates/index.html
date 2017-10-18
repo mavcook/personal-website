@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block nav_watermark %} {% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"/>
+{% endblock %}
+
+{% block content %}
+
+
+
+<div style="padding-top:7%; width: 100%; position: relative">
+	{% set links = [
+			('https://github.com/mavcook', url_for('static', filename='media/linkedin_dark.svg')),
+			('https://www.linkedin.com/in/mavcook/', url_for('static', filename='media/github_dark.svg')),
+			('https://www.youtube.com/', url_for('static', filename='media/youtube_dark.svg'))
+		]
+	%}
+	<div id="hub">
+		{% for l in links %}
+		<div class='md{{ (12 / (links|length))|int }} fadein'>
+			<a href="{{ l[0] }}" class="externalLink" target="_blank">
+				<img src="{{ l[1] }}" class="TS TS_Light_icon"/>
+			</a>
+		</div>
+		{% endfor %}
+
+	</div>
+
+	<hr class="TS TS_Light_hr">
+
+	<div class='section'>
+		<div class='icon-small floatLeft'>
+		</div>
+
+		<div class='section-body'>
+			<h1 class="TS TS_Light_h1">I like</h1>
+		</div>
+	</div>
+
+	{% set likes = [
+		{
+			'icon': url_for('static', filename='media/make.svg'),
+			'title': 'Making stuff',
+			'text': ['Fleets of popsicle-stick spaceships, bike ramps from scrap wood, stick-figure-ninja comic books,
+			stop-motion animations, written stories, songs, motion graphic videos. 
+			All things I used to, or currently spend my time making.', 'Now I am an undergraduate at the University of Michigan, studying Computer Science. 
+			This has made programming my newest make-medium.']
+		},
+		{
+			'icon': url_for('static', filename='media/film.svg'),
+			'title': 'Movies',
+			'text': ["I've always loved watching movies, especially the behind-the-scenes extras. I would love to dedicate more of my time
+			to film, and learn more pre through post production. I am looking to gain more experience, especially in directing.", 
+			'Some of my favorite movies: ']
+		},
+		{
+			'icon': url_for('static', filename='media/candy.svg'),
+			'title': 'Eating candy',
+			'text': ["Every 7 years I binge
+			I am trying to limit myself nowadays, but it is not unusual, given the oportunity, for me to eat 3lbs or more of sour patch kids in a couple days."]
+		}
+	]
+	%}
+	{% for x in likes %}
+	<div class='section'>
+		
+
+		<div class='icon-small floatLeft TS TS_Light_icon fadein'>
+			<img src="{{ x['icon'] }}"/>
+		</div>
+
+		<div class='section-body'>
+			<h2 class="TS TS_Light_h1">{{ x['title'] }}</h2>
+
+			{% for t in x['text'] %}
+			<p class="TS TS_Light_p">
+				{{ t }}
+			</p>
+			{% endfor %}
+		</div>
+		
+	</div>
+	{% endfor %}
+
+
+
+</div>
+	
+{% endblock %}

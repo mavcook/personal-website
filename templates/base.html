@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+	<title>{% block title %}{% endblock %} | Maverick Cook</title>
+	<meta name="description" content="{{ header_description }}">
+	<meta name="author" content="Maverick Cook">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="theme-color" content="#CE3333" />
+	
+	
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-78884815-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+	
+
+	<link rel="icon" href="{{ URLS['favicon'] }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/gbase.css') }}"/>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/headnav.css') }}"/>
+	
+
+	{% block css %}
+	{% endblock %}
+	
+	{% block header_additional %}
+	{% endblock %}
+	
+	
+</head>
+
+<body class="TS TS_Light_bg">	
+	
+	{% block banner %}
+	<div id="headerDiv">
+		
+
+		<div id="cycler">
+			{% for i in range(0, g.hImgs |length) %}
+				{% set iInfo = g.hImgs[i] %}
+				<img id="i{{i}}" class="{{ iInfo['active'] }}" src="{{ iInfo['src'] }}" alt="{{ iInfo['alt'] }}"/>
+			{% endfor %}
+		</div>
+		
+		<div class="logo">
+			<img src="{{ URLS['logo'] }}" alt="Maverick Cook Logo" id="logoImg">
+			<h1>Maverick Cook</h1>
+		</div>
+	
+	</div>
+	{% endblock %}
+	
+	<div id="navBarDiv">
+		<div id="navWrap">
+			
+
+			{% block nav_watermark %}
+				<div class="watermark">
+					<div id="wmWrap">
+						<img src="{{ URLS['logoWM'] }}" alt="Maverick Cook Watermark" id="watermarkImg">
+					</div>
+					<h1>Maverick Cook</h1>
+				</div>
+			{% endblock %}
+			
+			
+			<nav>
+				<!-- hamburger menu icon for mobile -->
+				<a class="link" id="sel">
+					<div>
+						<svg width="19" height="17" viewBox="0 0 19 17"><path fill="#FFF" d="M0 0h19v3.125H0zM0 7h19v3.125H0zM0 14h19v3.125H0z"/></svg>
+					</div>
+				</a>
+				
+				{% for text, url in navPages %}
+					<a class="link" href="{{ url }}">{{ text }}</a>
+				{% endfor %}
+			</nav>
+			
+		</div>
+	</div>
+
+	<div id="content" class="TS TS_Light_bg">
+	
+
+
+	{% block content %}
+	{% endblock %}
+
+	
+
+	<div id="footer">
+			<div id="footerBar">
+				<div id="switcherIcon">
+					<div class="roundedBar"></div>
+					<div class="circle"></div>
+				</div>
+			</div>
+			
+			<div id="footerText">
+				<div id="ftrTable">
+					<div class="ftrNavSec">
+						<h1 class="TS TS_Light_h1">Pages</h1>
+						<div class="ftrNavSecBody TS TS_Light_p">
+							{% for text, url in navPages %}
+								<a href="{{ url }}"><p class="TS TS_Light_bar">{{ text }}</p></a>
+							{% endfor %}
+						</div>
+					</div>
+					
+					<div class="ftrNavSec">
+						<h1 class="TS TS_Light_h1">Even More</h1>
+						<div class="ftrNavSecBody TS TS_Light_p">
+							{% for text, url in evenMore %}
+								<a href="{{ url }}"><p class="TS TS_Light_bar">{{ text }}</p></a>
+							{% endfor %}
+						</div>
+					</div>
+					
+				</div>
+				
+			</div><!-- END footerText -->
+			
+			<div class="copyRight">
+				&copy; 2016 Maverick Cook. All rights reserved.
+				</div>
+		</div><!-- END footer -->
+		
+	</div> <!-- END content -->
+	
+	<script>
+		// inline javascript to avoid slow http request for js file
+		function swapClass(els, replacor, replacee)
+		{
+			for (i = 0; i < els.length; ++i)
+				els[i].className = els[i].className.replace(replacor, replacee);
+		}
+
+		document.getElementById("switcherIcon").addEventListener("click", changeTheme, false);
+		var circ = document.getElementsByClassName('circle')[0];
+
+		var isDarkTheme = true;
+		elsToSwitch = document.querySelectorAll('.TS');
+
+		function changeTheme()
+		{
+			var emChange = -1.1;
+			var curTheme = 'TS_Dark';
+			var newTheme = 'TS_Light';
+			var cookieName = 'dark';
+			
+			if (isDarkTheme) //switch to light theme
+			{
+				emChange = .1;
+				curTheme = 'TS_Light';
+				newTheme = 'TS_Dark';
+				cookieName = 'light';
+			}
+
+			// update style switcher
+			circ.style.left = "calc(50% + " + emChange + "em)";
+			
+			swapClass(elsToSwitch, curTheme, newTheme);
+			isDarkTheme = !isDarkTheme;
+			document.cookie = "theme=" + cookieName + ";path=/";
+		}
+
+		//Self invoking function that keeps the theme across website once
+		// it has been selected
+		(function()
+		{
+			var currentTheme;
+			var cookie = "; " + document.cookie;
+			var parts = cookie.split("; " + "theme" + "=");
+			if (parts.length == 2) 
+				currentTheme = parts.pop().split(";").shift();
+			
+			if (currentTheme == "dark")
+			{
+				isDarkTheme = false;
+				changeTheme();
+			}
+			else if (currentTheme == "light")
+			{
+				isDarkTheme = true;
+				changeTheme();
+			}
+			//else do nothing for first time visitors
+		})();
+	</script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="crossorigin="anonymous"></script>
+	<script src="{{ url_for('static', filename='js/gmain.js') }}" type="text/javascript" defer></script>
+	{% block footer_additional %}
+	{% endblock %}
+	
+</body>
+
+
+</html>

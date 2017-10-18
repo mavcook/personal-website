@@ -1,0 +1,390 @@
+.content
+{
+	font-family: arial;
+	background-color: #242424;
+}
+
+
+#infoWrap
+{
+	position: relative;
+	margin-top: 2%;
+	margin: 0 auto;
+	width: 100%;
+	
+	
+	text-align: center;
+	
+	
+	z-index: 1; /* so box-shadow is not hid*/
+}
+
+
+
+
+.line
+{
+	margin: 0 auto;
+	margin-top: 2%;
+	width: 100%;
+	height: 6px;
+	margin-bottom: .5%;
+}
+
+
+
+
+.contactBanner
+{
+	position: relative;
+	height: 40px;
+	width: 100%;
+}
+
+
+
+.gradLeft
+{
+	display:none;
+}
+
+.contactBar
+{
+	position: relative;
+	height: 40px;
+	line-height: 40px;
+	font-size: 1.2em;
+	z-index: 40;
+}
+
+.contactBar span
+{
+	display: inline-block;
+	vertical-align: middle;
+	line-height: normal;
+}
+
+
+.gradRight
+{
+	display:none;
+}
+.contactBanner:before 
+{
+	content: ""; 
+	position:absolute; 
+	width:90%;  
+	top: 0; 
+	bottom: 0;
+	left: 5%;
+
+	border-radius: 100px / 10px; 
+	box-shadow:0 2px 6px rgba(0,0,0,.3);
+	z-index: -1;
+}
+
+
+
+.intro
+{
+	padding-top: 3%;
+	padding-bottom: 3%;
+	height: 100%;
+	position: relative;
+	margin: 0 auto;
+	width: 90%;
+	font-size: .95em;
+}
+.intro::before
+{
+	content: ""; 
+	position:absolute; 
+	width:100%;  
+	top: 0; 
+	bottom: 0;
+	left: 0%;
+	border-radius: 100px / 1px; 
+	box-shadow:0 2px 6px rgba(0,0,0,.3); 
+}
+.intro p
+{
+	line-height: 1.5em;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+
+
+
+#contactFormWrap
+{
+	position: relative;
+	left: 5%;
+	width: 90%;
+	margin-bottom: 5%;
+	margin-top: 2%;
+}
+
+label
+{
+	float: left;
+	padding-right: .3em;
+}
+
+span
+{
+	display: block;
+	overflow: hidden;
+}
+
+table
+{
+
+	
+	margin: 0 auto;
+	border-collapse: collapse;
+	background-color: #253745;
+	z-index: 100;
+	
+}
+
+
+
+td
+{
+
+	padding: 0;
+	
+}
+.label
+{
+	white-space: nowrap;
+}
+
+
+.textInput
+{
+	width: 99%;
+}
+
+.label, .textInput
+{
+	background-color: #cc3333;
+	font-size: .9em;
+	padding-top: 4%;
+	padding-bottom: 4%;
+	color: #dbdbdb;
+}
+
+
+.label
+{
+
+	padding-left: 2%;
+	padding-right: 3%;
+	
+}
+
+input[type="text"]
+{
+	width: 100%;
+	border: none;
+	outline: none;
+	background-color:  #cc3333;
+	color: #dbdbdb;
+	font-size: 1em;
+}
+input[type="text"]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	color: #e27676;
+}
+input[type="text"]::-moz-placeholder { /* Firefox 19+ */
+	color: #e27676;
+}
+input[type="text"]:-ms-input-placeholder { /* IE 10+ */
+	color: #e27676;
+}
+input[type="text"]:-moz-placeholder { /* Firefox 18- */
+	color: #e27676;
+}
+
+
+#emailBody
+{
+	min-width: 100%; /* fix for firefox */
+	max-width: 200%;
+	height: 100%;
+	resize: vertical;
+	overflow: auto;
+}
+
+textarea
+{	
+	padding: 2%;
+	width: 100%;
+	height: 90%;
+	border: none;
+	outline: none;
+	color: #2b8dbe;
+	font-size: 1.1em;
+	background-color: #253745;
+	box-sizing: border-box;
+	resize: none;
+	overflow: auto;
+}
+
+
+.send
+{
+	text-align: center;
+
+}
+input[type="submit"]
+{
+	background-color: #bc3232;
+	border-color: #bc3232;
+	border-radius: 2px;	
+	border: 1px solid #bc3232;
+
+	padding: 2% 6% 2% 6%;
+	
+	font-size: 1em;
+	color: #efefef;
+	text-decoration: none;
+	
+	cursor: pointer; 
+}
+
+
+
+#hub
+{
+	position: relative;
+	text-align: center;
+	width: 100%;
+}
+
+#hub h1
+{
+	font-weight: normal;
+	font-size: 1.6em;
+}
+
+.hubImageInst a
+{
+	text-decoration: none;
+	font-size: 1.2em;
+	transition: .3s;
+	line-height: 2em;
+}
+
+.hubImageInst a:hover
+{
+	background-color: #ce3333;
+	color: #fff;
+	padding: 0 5% 0 5%;
+}
+
+@media screen and (min-width: 800px)
+{
+
+	#infoWrap
+	{
+		margin-top: 5%;
+		width: 80%;
+	
+	}
+	
+	.line
+	{
+		width: 90%;
+		height: 7px;
+	}
+
+	.contactBanner
+	{
+		height: 60px;
+		width: 100%;
+	}
+	
+	.gradLeft
+	{
+		content: '';
+		position: absolute;
+		height: 100%;
+		width: 40%;
+		
+		z-index: 38;
+		display: block;
+	}
+
+	.contactBar
+	{
+		height: 60px;
+		line-height: 60px;
+		font-size: 1.8em;
+	}
+
+	.gradRight
+	{
+		content: '';
+		position: absolute;
+		right: 0;
+		top: 0;
+		height: 100%;
+		width: 40%;
+		 
+		z-index: 39;
+		display: block;
+	}
+	
+
+	
+	.intro
+	{
+		width: 80%;
+		font-size: .95em;
+	}
+
+	
+	
+	
+	table
+	{
+		width: 71%;
+		box-shadow:0 3px 6px rgba(0,0,0,.3); 
+	}
+	
+	.label, .textInput
+	{
+		font-size: .9em;
+		padding-top: 1%;
+		padding-bottom: 1%;
+	}
+	
+	
+	input[type="submit"]
+	{
+		padding: .5% 2% .5% 2%;
+		font-size: 1em;
+	}
+
+}
+
+
+
+@media screen and (min-width: 1600px)
+{
+	#infoWrap
+	{
+		margin-top: 2%;
+		width: 70%;
+	}
+	table
+	{
+		width: 62.3%; 
+	}
+}
+
+.antispam { display:none;}

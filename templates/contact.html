@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %}Contact{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}"/>
+{% endblock %}
+
+{% block nav_watermark %} {% endblock %}
+{% block content %}
+
+
+
+<script>var first = "mav", last = "mavcook.com";</script>
+
+    <div id="infoWrap" class="TS TS_Light_h1">
+        
+        <div class="line TS TS_Light_cLine"></div>
+        
+        <div class="contactBanner TS TS_Light_cBan">
+            <div class="gradLeft TS TS_Light_gradLeft"></div>
+            <div class="contactBar"><span id="cMe">Contact Me</span></div>
+            <div class="gradRight TS TS_Light_gradRight"></div>
+        </div>
+        
+        <div class="intro" id="cInfo">
+            <p>If you have any questions, ideas you would like to discuss, or just want to say hi, 
+            you can email me directly at <script type="text/javascript">document.write(first + '@' + last);</script>, 
+            or you can use the contact form below. I will get back with you in 1-2 days.
+            </p>
+        </div>
+    </div>
+    
+    
+
+    <div id="contactFormWrap">
+    
+
+        <form method="post">
+            <table>
+            
+                <div id="emailHeader">
+                    <tr>
+                        <td class="label">Name:</td>
+                        <td class="textInput"><input type="text" id="nameField" name="name" placeholder="Henry Jones Jr" maxlength="70" required></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Your Email:</td>
+                        <td class="textInput"><input type="text" id="emailField" name="emailAddress" placeholder="ArtifactHunter@mailbox.com" maxlength="50" required></td>
+                        <p class="antispam">Leave this empty: <input type="text" name="url" /></p>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Subject:</td>
+                        <td class="textInput"><input type="text" id="subjectField" name="subject" placeholder="Fortune and Glory" maxlength="100" required></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Favorite Movie/s:</td>
+                        <td class="textInput"><input type="text" id="favMovField" name="favMov" placeholder="Alien" maxlength="100"></td>
+                    </tr>
+                </div>
+
+                <tr>
+                    <td colspan="4">
+                        <div id="emailBody"><textarea id="messageField" placeholder="Draft it up" rows="12" name="msgBody" required></textarea></div>
+                    </td>
+                </tr>
+                
+                
+            
+            </table>
+            <div class="send"><input type="submit" value="Send" name="contact_submit"></div>
+        </form>	
+        
+    
+    </div> <!-- END contactFormWrap -->
+    
+    <div style="clear: both"/>
+    
+    <div id="hub">
+        <h1 class="TS TS_Light_h1">Find me elsewhere:</h1>
+        <div class="hubImageInst" id="gitHub">
+            <a href="https://github.com/mavcook" target="_blank" class="TS TS_Light_pk">GitHub</a>
+        </div>
+        <div class="hubImageInst" id="linkedIn">
+            <a href="https://www.linkedin.com/in/mavcook" target="_blank" class="TS TS_Light_pk">LinkedIn</a>
+        </div>
+    </div>
+    
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Portfolio{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/portfolio.css') }}"/>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/gallery.css') }}"/>
+{% endblock %}
+
+{% block nav_watermark %} {% endblock %}
+
+{% block content %}
+
+
+<div class="projects gal">
+	
+	<div class="thumb flex-thumb">
+		<div class="sectionMark">
+			<div class="secBars">
+				<div class="bar" id="topBar"></div>
+				<div class="bar" id="bottomBar"></div>
+			</div>
+			
+			<div class="sectionTitle"><p>{{ title }}</p></div>
+			
+			<div class="secBars" id="botSecBar">
+				<div class="bar" id="topBar2"></div>
+				<div class="bar" id="bottomBar2"></div>
+			</div>
+			
+		</div>
+	</div>	
+	
+	{% for p in media %}
+
+
+			<div class="thumb flex-thumb cur-pt" id="img_{{ loop.index }}" onclick="toggleViewer('#img_{{loop.index}}' ,'{{ p[0] }}')">
+				
+				<img src="{{ p[1] }}" 
+					alt="{{ p['title'] }} Thumbnail">
+			
+			</div>	
+        
+        
+    {% endfor %}
+    <div id="mediaWrap" data-parent="">
+        <img id="imgView" src=""/>
+        <video id="vidView" controls width="100%" height="100%" src="" controlsList="nodownload"></video>
+        <!-- <div id="imgCollapser"></div> -->
+    </div>
+
+    
+	
+</div> <!-- END projects -->
+<a href="{{ requesterURL }}" id="btn">Return to Portfolio</a>
+{% endblock %}
+
+{% block footer_additional %}
+<script src="{{ url_for('static', filename='js/gallery.js') }}" type="text/javascript" defer></script>
+{%endblock%}

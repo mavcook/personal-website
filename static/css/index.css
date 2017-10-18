@@ -1,0 +1,109 @@
+
+.fadein
+{
+    -webkit-animation: fadein 2s ease-out forwards;
+    -moz-animation: fadein 2s ease-out forwards;
+    -ms-animation: fadein 2s ease-out forwards;	
+    animation: fadein 2s ease-out forwards;	
+}
+
+@keyframes fadein 
+{
+    from { opacity: 0; }
+    to { opacity: 1;}			
+}
+
+@-webkit-keyframes fadein 
+{
+    from { opacity: 0; }
+    to { opacity: 1;}				
+}
+
+.border { width: 1px;background-color: #d0d0d0; flex-shrink: 1; margin: 30px;}
+#hub {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    height: 50px;
+}
+
+.externalLink {
+    width: 40%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    
+}
+.externalLink .TS_Dark_icon, .externalLink .TS_Light_icon {
+    transition: 0.3s;
+}
+.externalLink img {height: auto; max-height: 100%; width: 100%;}
+.externalLink:hover .TS_Light_icon {
+    filter: brightness(50%);
+}
+.externalLink:hover .TS_Dark_icon {
+    filter: brightness(100%);
+}
+.externalLink:hover img{
+    transform: scale(1.1);
+}
+.section {
+    display: flex;
+    position: relative;
+    max-width: 1000px;
+    width: 90%;
+    margin: 0 auto;
+    align-items: center;
+    padding-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+
+.section-body{
+    position: relative;
+    width: 100%;
+}
+
+.va-helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.icon-small {
+    flex-basis: 20%;
+    padding: 0;
+    padding-right: 30px;
+}
+
+hr { width: 100%; margin-top: 35px;}
+
+
+@media screen and (min-width: 500px)
+{
+    hr { width: 100%; margin-top: 50px;}
+    
+    .externalLink img { width: 75%; }
+    
+    #hub { width: 100%; height: 60px }
+    
+    .section{ width: 90%; flex-wrap: nowrap; }
+
+    .icon-small { flex-basis: unset; padding: 30px; }
+}
+
+
+@media screen and (min-width: 950px)
+{
+    #hub { width: 84%; height: 120px; }
+
+    hr { width: 75%; }
+
+    .icon-small { width: 130px;}
+
+    .section { width: 70%; }
+
+    .section-body{ width: 75%; }
+}

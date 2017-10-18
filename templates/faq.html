@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}FAQ{% endblock %}
+{% block nav_watermark %} {% endblock %}
+{% block content %}
+
+{% set data = [
+    {
+        'q': 'Why do you have a Frequently Asked Questions page?',
+        'a': ['Maybe I will need it one day. And it helps fill out the sparse footer.']
+    },
+    {
+        'q': 'Did your parents like Top Gun (1986) / Where is Goose?',
+        'a': [
+            'These actually are frequently asked questions for me. My parents are from Markovia, and have never seen Top Gun because Paramount publicly hates Markovia and doesn\'t distribute movies there. The Paramount and Markovia dispute is actually quite interesting. If you would like to learn more about it, check out <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">this video</a>.', 
+            'Goose is dead.'
+        ]
+    }
+]
+%}
+
+<div style="padding: 5%;">
+    {% for qa in data %}
+    <h1 class="TS TS_Light_h1">Q: {{ qa['q'] }}</h1>
+    {% for answer in qa['a'] %}
+    <p class="TS TS_Light_p">A: {{ answer|safe }}</p>
+    {% endfor %}
+    <br/><br/>
+    {% endfor %}
+</div>
+
+{% endblock %}
