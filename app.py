@@ -3,6 +3,7 @@ import extensions
 import controllers
 import config
 import os
+import sys
 
 #TODO:
 # get rid of or fix js image optomization (cookies)
@@ -81,27 +82,27 @@ def getCurrent():
 	hImgs = [
 		{
 			'active': 'active',
-			'src': url_for('static', filename='media/bg/00_small.jpg'),
+			'src': url_for('static', filename='media/bg/00_large.jpg'),
 			'alt': 'Cloud Steps by Maverick Cook'
 		},
 		{
 			'active': '',
-			'src': url_for('static', filename='media/bg/01_small.jpg'),
+			'src': url_for('static', filename='media/bg/01_large.jpg'),
 			'alt': 'Mushrooms by Maverick Cook'
 		},
 		{
 			'active': '',
-			'src': url_for('static', filename='media/bg/02_small.jpg'),
+			'src': url_for('static', filename='media/bg/02_large.jpg'),
 			'alt': 'Macro Guitar Strings by Maverick Cook'
 		},
 		{
 			'active': '',
-			'src': url_for('static', filename='media/bg/03_small.jpg'),
+			'src': url_for('static', filename='media/bg/03_large.jpg'),
 			'alt': 'Traverse City Stars by Maverick Cook'
 		},
 		{
 			'active': '',
-			'src': url_for('static', filename='media/bg/04_small.jpg'),
+			'src': url_for('static', filename='media/bg/04_large.jpg'),
 			'alt': 'Macro Tree Stump by Maverick Cook'
 		}
 	]

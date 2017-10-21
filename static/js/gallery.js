@@ -1,46 +1,45 @@
 var lastOpened = '';
+var vidView;
+var imgView;
+var mediaWrap;
+var htmlBody;
 
-// (function defer() {
-//     if (window.jQuery) {
-//         $(window).resize(function(){
-//             $('#mediaWrap').height($('#imgView')[0].height + 'px')
-//         });
-		
-//         $('#mediaWrap').click(function(){
-//             var pdiv = $($(this).attr('data-parent'))
-//             $(this).animate({height: '0px'});
-//             $('html, body').animate({
-//                 scrollTop: (pdiv.offset().top - 100)
-//             },'slow');
-//             lastOpened = '';
-//         });
-//     } else {
-//         setTimeout(function() { defer() }, 50);
-//     }
-// })();
 
 
 $(document).ready(function()
 {
+	vidView = $('#vidView');
+	imgView = $('#imgView');
+	mediaWrap = $('#mediaWrap');
+	htmlBody = $('html, body');
 
 	$(window).resize(function(){
-		$('#mediaWrap').height($('#imgView')[0].height + 'px')
+		mediaWrap.height(imgView[0].height + 'px')
 	});
 	
-	$('#mediaWrap').click(function(){
+	mediaWrap.click(function(){
 		var pdiv = $($(this).attr('data-parent'))
 		$(this).animate({height: '0px'});
-		$('html, body').animate({scrollTop: (pdiv.offset().top - 100)});
+		htmlBody.animate({scrollTop: (pdiv.offset().top - 100)});
 		lastOpened = '';
 	});
 
 });
 
 
+
+
 function toggleViewer(parent, imgsrc)
 {
-	var t = $('#mediaWrap');
+	var t = mediaWrap;
 	var parentDiv = $(parent);
+
+	var scroller = function(){
+		htmlBody.animate({
+			scrollTop: (parentDiv.offset().top - 100)
+		});
+	};
+	
 
 	// close if image is visible
 	t.animate({height: '0px'});
@@ -48,26 +47,24 @@ function toggleViewer(parent, imgsrc)
 	// dont reopen same pic
 	if (lastOpened === parent)
 	{   
-		$('html, body').animate({
-			scrollTop: (parentDiv.offset().top - 100)
-		});
+		scroller();
 		lastOpened = '';
 		return;
 	}
 	lastOpened = parent;
 
 	// else open
-	var tImg = $('#imgView');
+	var tView = imgView;
 	var loadEvent = 'load', mediaType = 'pic';
 
 	if (imgsrc.split('.').pop() === 'mp4')
 	{
-		tImg = $('#vidView');
+		tView = vidView;
 		loadEvent = 'loadeddata';
 		mediaType = 'video';
 	}
 
-	tImg.one(loadEvent, 
+	tView.one(loadEvent, 
 		function(){
 			
 			// new media src has finished loading
@@ -75,21 +72,19 @@ function toggleViewer(parent, imgsrc)
 			// put viewer below selected media
 			t.css({top: parentDiv.position().top + parentDiv.height() + 'px'});
 			
-			var mediaHeight = tImg[0].height;
+			var mediaHeight = tView[0].height;
 			if (mediaType === 'pic')
-				$('#vidView').hide();
+				vidView.hide();
 			else
 			{
-				mediaHeight = tImg.height();
-				$('#imgView').hide();
+				mediaHeight = tView.height();
+				imgView.hide();
 			}
-			tImg.show();
+			tView.show();
 
-			$('html, body').animate({
-				scrollTop: (t.offset().top - 100)
-			},'slow');
-			
-			t.animate({height: mediaHeight + 'px'}, 'slow'); 
+			scroller();
+
+			t.animate({height: mediaHeight + 'px'}); 
 			
 		}
 	).attr('src', imgsrc);        

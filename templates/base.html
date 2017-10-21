@@ -22,9 +22,7 @@
 	
 
 	<link rel="icon" href="{{ URLS['favicon'] }}">
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/gbase.css') }}"/>
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/headnav.css') }}"/>
-	
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/gbase.css') }}" async/>	
 
 	{% block css %}
 	{% endblock %}
@@ -44,7 +42,9 @@
 		<div id="cycler">
 			{% for i in range(0, g.hImgs |length) %}
 				{% set iInfo = g.hImgs[i] %}
-				<img id="i{{i}}" class="{{ iInfo['active'] }}" src="{{ iInfo['src'] }}" alt="{{ iInfo['alt'] }}"/>
+				<!-- <img id="i{{i}}" class="{{ iInfo['active'] }}" src="{{ iInfo['src'] }}" alt="{{ iInfo['alt'] }}"/> -->
+				<img src="data:image/jpg;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="{{ iInfo['src'] }}"
+				id="i{{i}}" class="{{ iInfo['active'] }}" alt="{{ iInfo['alt'] }}" />
 			{% endfor %}
 		</div>
 		
@@ -73,9 +73,7 @@
 			<nav>
 				<!-- hamburger menu icon for mobile -->
 				<a class="link" id="sel">
-					<div>
-						<svg width="19" height="17" viewBox="0 0 19 17"><path fill="#FFF" d="M0 0h19v3.125H0zM0 7h19v3.125H0zM0 14h19v3.125H0z"/></svg>
-					</div>
+					<svg width="19" height="17" viewBox="0 0 19 17"><path fill="#FFF" d="M0 0h19v3.125H0zM0 7h19v3.125H0zM0 14h19v3.125H0z"/></svg>
 				</a>
 				
 				{% for text, url in navPages %}
@@ -135,6 +133,15 @@
 	</div> <!-- END content -->
 	
 	<script>
+			function init() {
+				// thanks to https://varvy.com/pagespeed/defer-images.html
+				var imgDefer = document.getElementsByTagName('img');
+				for (var i=0; i<imgDefer.length; i++) {
+				if(imgDefer[i].getAttribute('data-src')) {
+				imgDefer[i].setAttribute('src',imgDefer[i].getAttribute('data-src'));
+				} } }
+				window.onload = init;
+
 		// inline javascript to avoid slow http request for js file
 		function swapClass(els, replacor, replacee)
 		{
