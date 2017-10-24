@@ -1,9 +1,10 @@
 from config import connect_to_database
 db = connect_to_database('web')
-cursor = db.cursor()
 
 
 def getProjects(sort=None, tags=None):
+	cursor = db.cursor()
+	
 	baseQ = 'SELECT *, YEAR(date) as year FROM Project'
 	args = None
 
@@ -32,18 +33,29 @@ def getProjects(sort=None, tags=None):
 		baseQ += ' ORDER BY project_seq ASC'
 
 	cursor.execute(baseQ, args)
-	return cursor.fetchall()
+	results = cursor.fetchall()
+	cursor.close()
+	return results
 
 def getProject(pid):
+	cursor = db.cursor()
 	pid = str(pid)
-	cursor.execute('SELECT *, YEAR(date) as year FROM Project where project_id=%s', (pid,))
-	return cursor.fetchone()
+	cursor.execute('SELECT *, YEAR(date) as year FROM Project WHERE project_id=%s LIMIT 1', (pid,))
+	results = cursor.fetchone()
+	cursor.close()
+	return results
 
 def getProjectMedia(pid):
+	cursor = db.cursor()
 	pid = str(pid)
 	cursor.execute('SELECT directoryPath FROM Media WHERE project_id=%s', (pid,))
-	return cursor.fetchall()
+	results = cursor.fetchall()
+	cursor.close()
+	return results
 
 def getTags():
+	cursor = db.cursor()
 	cursor.execute('SELECT name as tag FROM PTags')
-	return cursor.fetchall()
+	results = cursor.fetchall()
+	cursor.close()
+	return results
