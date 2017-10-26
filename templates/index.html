@@ -54,6 +54,11 @@
 			to film, and learn more pre through post production. I am looking to gain more experience, especially in directing."]
 		},
 		{
+			'icon': url_for('static', filename='media/edu.svg'),
+			'title': 'Education',
+			'text': ["I have learned most of what I know from free resources, whether it is online, at public libraries, or community programs, and I wouldn't be who I am or where I am without those oportunities. But not everyone gets those same opportunities or resources. So I like to help with initiatives involving free and accessible education. I think it is essential to make sure no one is put at a disadvantage or has barriers to access education.", "Right now, I am working on Seven Mile Coding, a project I started to increase computer programming education in Detroit. You can learn more about it <a href='http://sevenmilecoding.org' target='_blank'>here</a>."]
+		},
+		{
 			'icon': url_for('static', filename='media/candy.svg'),
 			'title': 'Eating candy',
 			'text': ["I am trying to limit myself nowadays, but it is not unusual, given the oportunity, for me to eat 3lbs or more of sour patch kids in a couple days."]
@@ -73,7 +78,7 @@
 
 			{% for t in x['text'] %}
 			<p class="TS TS_Light_p">
-				{{ t }}
+				{{ t|safe }}
 			</p>
 			{% endfor %}
 		</div>
