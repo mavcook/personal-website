@@ -3,12 +3,12 @@ from config import connect_to_database
 
 def sqlQuery(queryFunc):
 
-	def openClose(*args):
+	def openClose(*args, **kwargs):
 		db = connect_to_database('web')
 		cursor = db.cursor()
 		args = args + (cursor,)
 
-		results = queryFunc(*args)
+		results = queryFunc(*args, **kwargs)
 
 		cursor.close()
 		db.close()
