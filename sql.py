@@ -1,10 +1,24 @@
 from config import connect_to_database
-db = connect_to_database('web')
 
 
-def getProjects(sort=None, tags=None):
-	cursor = db.cursor()
-	
+def sqlQuery(queryFunc):
+
+	def openClose(*args):
+		db = connect_to_database('web')
+		cursor = db.cursor()
+		args = args + (cursor,)
+
+		results = queryFunc(*args)
+
+		cursor.close()
+		db.close()
+		return results
+
+	return openClose
+
+@sqlQuery
+def getProjects(cursor, sort=None, tags=None):
+
 	baseQ = 'SELECT *, YEAR(date) as year FROM Project'
 	args = None
 
@@ -34,28 +48,24 @@ def getProjects(sort=None, tags=None):
 
 	cursor.execute(baseQ, args)
 	results = cursor.fetchall()
-	cursor.close()
 	return results
 
-def getProject(pid):
-	cursor = db.cursor()
+@sqlQuery
+def getProject(pid, cursor):
 	pid = str(pid)
 	cursor.execute('SELECT *, YEAR(date) as year FROM Project WHERE project_id=%s LIMIT 1', (pid,))
 	results = cursor.fetchone()
-	cursor.close()
 	return results
 
-def getProjectMedia(pid):
-	cursor = db.cursor()
+@sqlQuery
+def getProjectMedia(pid, cursor):
 	pid = str(pid)
 	cursor.execute('SELECT directoryPath FROM Media WHERE project_id=%s', (pid,))
 	results = cursor.fetchall()
-	cursor.close()
 	return results
 
-def getTags():
-	cursor = db.cursor()
+@sqlQuery
+def getTags(cursor):
 	cursor.execute('SELECT name as tag FROM PTags')
 	results = cursor.fetchall()
-	cursor.close()
 	return results
